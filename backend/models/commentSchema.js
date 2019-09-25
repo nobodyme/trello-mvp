@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+const Card = require('./cardSchema');
 
 const commentSchema = mongoose.Schema({
 	card: {
