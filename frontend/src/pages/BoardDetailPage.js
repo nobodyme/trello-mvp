@@ -5,6 +5,7 @@ import '../styles/pages/BoardDetailPage.css';
 import FetchApi from '../components/FetchApi';
 import List from '../components/List';
 import CardModal from '../components/CardModal';
+import SimpleForm from '../components/SimpleForm';
 
 function BoardsDetailPage(props) {
 	const [showModal, setShowModal] = React.useState(false);
@@ -13,10 +14,16 @@ function BoardsDetailPage(props) {
 	const handleCloseModal = () => setShowModal(false);
 	const handleShowModal = () => setShowModal(true);
 
+	const [showListForm, setShowListForm] = React.useState(false);
+	const [refetch, setRefetch] = React.useState(false);
+
 	return (
 		<div className="pageContainer">
 			<>
-				<FetchApi api={`/list/getboardlists?boardId=${props.match.params.id}`}>
+				<FetchApi
+					api={`/list/getboardlists?boardId=${props.match.params.id}`}
+					forceRefetch={refetch}
+				>
 					{(apiData, error) => {
 						if (error) {
 							return <div>Error</div>;
@@ -31,6 +38,17 @@ function BoardsDetailPage(props) {
 											key={data._id}
 										/>
 									))}
+									<div className="boardDetailPage__list">
+										<SimpleForm
+											api="/list/addboardlist"
+											inputPlaceholder="Enter list title..."
+											inputName="title"
+											id="boardId"
+											idValue={props.match.params.id}
+											buttonName="Add List"
+											setRefetch={setRefetch}
+										/>
+									</div>
 								</div>
 							);
 						} else {

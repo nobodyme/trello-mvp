@@ -11,7 +11,10 @@ function CardModal({ data, show, handleCloseModal }) {
 			</Modal.Header>
 			<Modal.Body>
 				<div className="cardModal__description">
-					<label for="description" className="cardModal__description__title">
+					<label
+						htmlFor="description"
+						className="cardModal__description__title"
+					>
 						Description
 					</label>
 					<textarea

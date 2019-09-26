@@ -7,7 +7,7 @@ router.post('/addboardlist', async (req, res) => {
 	const boardId = req.body.boardId;
 	const title = req.body.title;
 
-	if (!boardId) {
+	if (!boardId || !title) {
 		return res.status(400).json({ error: 'Insufficient Data' });
 	}
 	try {
