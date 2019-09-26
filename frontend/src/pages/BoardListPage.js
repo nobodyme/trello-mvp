@@ -1,11 +1,10 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import '../styles/pages/BoardsPage.css';
+import '../styles/pages/BoardListPage.css';
 
 import FetchApi from '../components/FetchApi';
-import Card from '../components/Card';
 
-function BoardsPage() {
+function BoardListPage() {
 	return (
 		<div className="container pageContainer">
 			<FetchApi api="/board/getboards">
@@ -21,9 +20,7 @@ function BoardsPage() {
 										key={data._id}
 										className="board__cardHolder"
 									>
-										<Card>
-											<div className="board__title">{data.title}</div>
-										</Card>
+										<div className="board__title">{data.title}</div>
 									</Link>
 								))}
 							</div>
@@ -37,4 +34,4 @@ function BoardsPage() {
 	);
 }
 
-export default BoardsPage;
+export default BoardListPage;

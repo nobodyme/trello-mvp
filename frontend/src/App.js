@@ -3,7 +3,8 @@ import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import './App.css';
 
 import Loading from './components/Loading';
-const BoardsPage = React.lazy(() => import('./pages/BoardsPage'));
+const BoardListPage = React.lazy(() => import('./pages/BoardListPage'));
+const BoardDetailPage = React.lazy(() => import('./pages/BoardDetailPage'));
 const ErrorPage = React.lazy(() => import('./pages/ErrorPage'));
 
 function App() {
@@ -26,7 +27,8 @@ function App() {
 				}
 			>
 				<Switch>
-					<Route path="/" exact component={BoardsPage} />
+					<Route path="/" exact component={BoardListPage} />
+					<Route path="/board/:id" component={BoardDetailPage} />
 					<Route render={props => <ErrorPage {...props} />} />
 				</Switch>
 			</React.Suspense>

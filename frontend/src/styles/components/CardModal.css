@@ -1,0 +1,21 @@
+.ModalShow{
+	position: fixed;
+	top: 0px;
+	left: 0px;
+	right: 0px;
+	bottom: 0px;
+	background-color: rgba(99, 97, 97, 0.5);
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.ModalHide{
+	display: none;
+}
+
+.ModalBody{
+	position: relative;
+	width: 25%;
+	height: 25%;
+}
