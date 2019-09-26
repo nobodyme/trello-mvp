@@ -4,14 +4,7 @@ import '../styles/components/List.css';
 import FetchApi from './FetchApi';
 import Card from './Card';
 
-function List({
-	data,
-	modalData,
-	handleModalData,
-	handleShowModal,
-	handleCloseModal,
-	show
-}) {
+function List({ data, handleModalData, handleShowModal }) {
 	return (
 		<>
 			<FetchApi api={`/card/getlistcards?listId=${data._id}`}>
@@ -25,11 +18,8 @@ function List({
 								<div className="list__cards">
 									{apiData.map(data => (
 										<Card
-											modalData={modalData}
 											handleModalData={handleModalData}
 											handleShowModal={handleShowModal}
-											handleCloseModal={handleCloseModal}
-											show={show}
 											data={data}
 											key={data._id}
 										/>

@@ -1,6 +1,7 @@
 import React from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import './App.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 import Loading from './components/Loading';
 const BoardListPage = React.lazy(() => import('./pages/BoardListPage'));
