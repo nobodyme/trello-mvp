@@ -1,7 +1,7 @@
-import React from 'react';
+import { Component } from 'react';
 import axios from '../utils/axios';
 
-class FetchApi extends React.Component {
+class FetchApi extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
@@ -12,8 +12,13 @@ class FetchApi extends React.Component {
 		this.fetchData = this.fetchData.bind(this);
 	}
 
+	componentDidMount() {
+		this.fetchData();
+	}
+
 	componentDidUpdate(prevProps, prevState) {
-		if (prevProps.forceRefresh !== this.props.forceRefresh) {
+		// force refetch on say form submission
+		if (prevProps.forceRefetch !== this.props.forceRefetch) {
 			this.fetchData();
 		}
 	}
@@ -30,8 +35,8 @@ class FetchApi extends React.Component {
 	}
 
 	render() {
-		const { error, loading, apiData } = this.state;
-		return this.props.children(error, loading, apiData);
+		const { error, apiData, loading } = this.state;
+		return this.props.children(apiData, error, loading);
 	}
 }
 

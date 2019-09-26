@@ -1,0 +1,20 @@
+.boards{
+	display: flex;
+}
+
+.board__cardHolder{
+	width: 200px;
+	height: 100px;
+	margin-right: 15px;
+	text-decoration: none;
+	color: black;
+}
+
+.board__title{
+	font-weight: bold;
+	font-size: large;
+}
+
+.board__cardHolder:hover{
+	opacity: 0.7;
+}
