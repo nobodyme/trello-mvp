@@ -13,7 +13,7 @@ function BoardListPage() {
 						return <div>Error</div>;
 					} else if (apiData) {
 						return (
-							<div className="boards">
+							<div className="boardsListPage">
 								{apiData.map(data => (
 									<Link
 										to={`/board/${data._id}`}

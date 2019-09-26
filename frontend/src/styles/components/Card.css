@@ -1,4 +1,4 @@
-.Card{
+.card{
 	border: 1px solid #e7eaf3;
 	border-radius: 4px;
 	background: #fff;
@@ -6,4 +6,9 @@
 	padding: 10px;
 	margin-bottom: 5px;
 	font-size: 14px;
+}
+
+
+.card:hover{
+	opacity: 0.7;
 }

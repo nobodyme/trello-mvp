@@ -3,16 +3,31 @@ import '../styles/components/Card.css';
 
 import CardModal from './CardModal';
 
-function Card({ data }) {
-	const [showModal, setShowModal] = React.useState(false);
-	const handleClose = () => setShowModal(false);
-	const handleShow = () => setShowModal(true);
+function Card({
+	data,
+	handleShowModal,
+	handleCloseModal,
+	show,
+	modalData,
+	handleModalData
+}) {
+	const handleCardClick = () => {
+		handleModalData(data);
+		handleShowModal();
+	};
 
 	return (
-		<div className="Card" onClick={handleShow}>
-			{data.title}
-			<CardModal show={showModal} />
-		</div>
+		<>
+			<div className="card" onClick={handleCardClick}>
+				{data.title}
+			</div>
+			<CardModal
+				handleModalData={handleModalData}
+				data={modalData ? modalData : data}
+				show={show}
+				handleCloseModal={handleCloseModal}
+			/>
+		</>
 	);
 }
 
