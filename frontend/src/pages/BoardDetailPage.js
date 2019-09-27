@@ -18,7 +18,7 @@ function BoardsDetailPage(props) {
 	const [refetch, setRefetch] = React.useState(false);
 
 	return (
-		<div className="pageContainer detailPage">
+		<div className="pageContainer">
 			<>
 				<FetchApi
 					api={`/list/getboardlists?boardId=${props.match.params.id}`}

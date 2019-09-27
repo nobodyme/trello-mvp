@@ -1,14 +1,10 @@
-.detailPage{
-	overflow-x: scroll;
-}
-
 .boardDetailPage{
 	display: flex;
 }
 
 .boardDetailPage__list{
 	margin-left: 15px;
-	width: 300px;
+	min-width: 300px;
 }
 
 .boardDetailPage__form{

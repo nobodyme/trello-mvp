@@ -1,11 +1,12 @@
 .boardsListPage{
 	display: flex;
+	flex-wrap: wrap;
 }
 
 .board__cardHolder{
 	width: 200px;
 	height: 100px;
-	margin-right: 15px;
+	margin: 0 15px 45px 0;
 	text-decoration: none;
 	color: black;
 	border: 1px solid #e7eaf3;
