@@ -1,4 +1,5 @@
 import React from 'react';
+import { IoMdAdd } from 'react-icons/io';
 
 import '../styles/pages/BoardDetailPage.css';
 
@@ -52,7 +53,7 @@ function BoardsDetailPage(props) {
 													idValue={props.match.params.id}
 													buttonName="Add List"
 													setRefetch={setRefetch}
-													close={handleCloseListForm}
+													handleClose={handleCloseListForm}
 												/>
 											</div>
 										) : (
@@ -60,7 +61,8 @@ function BoardsDetailPage(props) {
 												className="boardDetailPage__default"
 												onClick={handleShowListForm}
 											>
-												Add a list
+												<IoMdAdd />
+												<span className="default__name">Add a list</span>
 											</div>
 										)}
 									</div>
