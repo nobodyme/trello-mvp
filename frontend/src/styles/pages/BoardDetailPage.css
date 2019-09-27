@@ -1,3 +1,7 @@
+.detailPage{
+	overflow-x: scroll;
+}
+
 .boardDetailPage{
 	display: flex;
 }
@@ -7,6 +11,11 @@
 	width: 300px;
 }
 
+.boardDetailPage__form{
+	background: #e0e3e7;
+	padding: 10px;
+}
+
 .boardDetailPage__default{
 	background: #f4f5f7;
 	height: 48px;
@@ -14,7 +23,6 @@
 	font-size: 14px;
 }
 
-.boardDetailPage__list{
+.boardDetailPage__default:hover{
 	background: #e0e3e7;
-	padding: 10px;
 }

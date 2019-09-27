@@ -18,7 +18,7 @@ function BoardsDetailPage(props) {
 	const [refetch, setRefetch] = React.useState(false);
 
 	return (
-		<div className="pageContainer">
+		<div className="pageContainer detailPage">
 			<>
 				<FetchApi
 					api={`/list/getboardlists?boardId=${props.match.params.id}`}
@@ -39,15 +39,27 @@ function BoardsDetailPage(props) {
 										/>
 									))}
 									<div className="boardDetailPage__list">
-										<SimpleForm
-											api="/list/addboardlist"
-											inputPlaceholder="Enter list title..."
-											inputName="title"
-											id="boardId"
-											idValue={props.match.params.id}
-											buttonName="Add List"
-											setRefetch={setRefetch}
-										/>
+										{showListForm === true ? (
+											<div className="boardDetailPage__form">
+												<SimpleForm
+													toggleForm={setShowListForm}
+													api="/list/addboardlist"
+													inputPlaceholder="Enter list title..."
+													inputName="title"
+													id="boardId"
+													idValue={props.match.params.id}
+													buttonName="Add List"
+													setRefetch={setRefetch}
+												/>
+											</div>
+										) : (
+											<div
+												className="boardDetailPage__default"
+												onClick={() => setShowListForm(true)}
+											>
+												Add a list
+											</div>
+										)}
 									</div>
 								</div>
 							);

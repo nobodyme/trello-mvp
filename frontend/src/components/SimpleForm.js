@@ -10,7 +10,8 @@ function SimpleForm({
 	id,
 	idValue,
 	buttonName,
-	setRefetch
+	setRefetch,
+	toggleForm
 }) {
 	const [value, setValue] = React.useState('');
 	const [error, setError] = React.useState('');
@@ -27,6 +28,7 @@ function SimpleForm({
 				setError(err.message);
 			});
 		setValue('');
+		toggleForm(c => !c);
 	};
 	return (
 		<div>

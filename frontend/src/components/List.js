@@ -7,6 +7,7 @@ import SimpleForm from './SimpleForm';
 
 function List({ data, handleModalData, handleShowModal }) {
 	const [refetch, setRefetch] = React.useState(false);
+	const [showCardForm, setShowCardForm] = React.useState(false);
 
 	return (
 		<FetchApi
@@ -29,16 +30,28 @@ function List({ data, handleModalData, handleShowModal }) {
 										key={data._id}
 									/>
 								))}
-								<div>
-									<SimpleForm
-										api="/card/addlistcard"
-										inputPlaceholder="Enter a title for this card..."
-										inputName="title"
-										id="listId"
-										idValue={data._id}
-										buttonName="Add Card"
-										setRefetch={setRefetch}
-									/>
+								<div className="list__cards__new">
+									{showCardForm === true ? (
+										<div className="list__card__form">
+											<SimpleForm
+												toggleForm={setShowCardForm}
+												api="/card/addlistcard"
+												inputPlaceholder="Enter a title for this card..."
+												inputName="title"
+												id="listId"
+												idValue={data._id}
+												buttonName="Add Card"
+												setRefetch={setRefetch}
+											/>
+										</div>
+									) : (
+										<div
+											className="list__card__default"
+											onClick={() => setShowCardForm(true)}
+										>
+											Add a card
+										</div>
+									)}
 								</div>
 							</div>
 						</div>
