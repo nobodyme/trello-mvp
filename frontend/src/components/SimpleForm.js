@@ -1,5 +1,6 @@
 import React from 'react';
 import axios from '../utils/axios';
+import { IoIosClose } from 'react-icons/io';
 
 import '../styles/components/SimpleForm.css';
 
@@ -11,7 +12,8 @@ function SimpleForm({
 	idValue,
 	buttonName,
 	setRefetch,
-	toggleForm
+	toggleForm,
+	handleClose
 }) {
 	const [value, setValue] = React.useState('');
 	const [error, setError] = React.useState('');
@@ -44,6 +46,7 @@ function SimpleForm({
 				<button className="simpleForm__button" type="submit">
 					{buttonName}
 				</button>
+				<IoIosClose onClick={handleClose} />
 			</form>
 		</div>
 	);

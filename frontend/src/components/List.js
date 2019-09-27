@@ -8,6 +8,8 @@ import SimpleForm from './SimpleForm';
 function List({ data, handleModalData, handleShowModal }) {
 	const [refetch, setRefetch] = React.useState(false);
 	const [showCardForm, setShowCardForm] = React.useState(false);
+	const handleShowCardForm = () => setShowCardForm(true);
+	const handleCloseCardForm = () => setShowCardForm(false);
 
 	return (
 		<FetchApi
@@ -42,12 +44,13 @@ function List({ data, handleModalData, handleShowModal }) {
 												idValue={data._id}
 												buttonName="Add Card"
 												setRefetch={setRefetch}
+												handleClose={handleCloseCardForm}
 											/>
 										</div>
 									) : (
 										<div
 											className="list__card__default"
-											onClick={() => setShowCardForm(true)}
+											onClick={handleShowCardForm}
 										>
 											Add a card
 										</div>

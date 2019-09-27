@@ -15,6 +15,8 @@ function BoardsDetailPage(props) {
 	const handleShowModal = () => setShowModal(true);
 
 	const [showListForm, setShowListForm] = React.useState(false);
+	const handleShowListForm = () => setShowListForm(true);
+	const handleCloseListForm = () => setShowListForm(false);
 	const [refetch, setRefetch] = React.useState(false);
 
 	return (
@@ -50,12 +52,13 @@ function BoardsDetailPage(props) {
 													idValue={props.match.params.id}
 													buttonName="Add List"
 													setRefetch={setRefetch}
+													close={handleCloseListForm}
 												/>
 											</div>
 										) : (
 											<div
 												className="boardDetailPage__default"
-												onClick={() => setShowListForm(true)}
+												onClick={handleShowListForm}
 											>
 												Add a list
 											</div>
