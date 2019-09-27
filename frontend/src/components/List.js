@@ -1,5 +1,6 @@
 import React from 'react';
 import '../styles/components/List.css';
+import { Droppable } from 'react-beautiful-dnd';
 
 import FetchApi from './FetchApi';
 import Card from './Card';
@@ -21,38 +22,48 @@ function List({ data, handleModalData, handleShowModal }) {
 					return (
 						<div className="list">
 							<div className="list__title">{data.title}</div>
-							<div className="list__cards">
-								{apiData.map(data => (
-									<Card
-										handleModalData={handleModalData}
-										handleShowModal={handleShowModal}
-										data={data}
-										key={data._id}
-									/>
-								))}
-								<div className="list__cards__new">
-									{showCardForm === true ? (
-										<div className="list__card__form">
-											<SimpleForm
-												toggleForm={setShowCardForm}
-												api="/card/addlistcard"
-												inputPlaceholder="Enter a title for this card..."
-												inputName="title"
-												id="listId"
-												idValue={data._id}
-												buttonName="Add Card"
-												setRefetch={setRefetch}
+							<Droppable droppableId={data._id}>
+								{provided => (
+									<div
+										className="list__cards"
+										innerRef={provided.innerRef}
+										{...provided.droppableProps}
+									>
+										{apiData.map((data, index) => (
+											<Card
+												index={index}
+												handleModalData={handleModalData}
+												handleShowModal={handleShowModal}
+												data={data}
+												key={data._id}
 											/>
-										</div>
-									) : (
-										<div
-											className="list__card__default"
-											onClick={() => setShowCardForm(true)}
-										>
-											Add a card
-										</div>
-									)}
-								</div>
+										))}
+										{provided.placeholder}
+									</div>
+								)}
+							</Droppable>
+							<div className="list__cards__new">
+								{showCardForm === true ? (
+									<div className="list__card__form">
+										<SimpleForm
+											toggleForm={setShowCardForm}
+											api="/card/addlistcard"
+											inputPlaceholder="Enter a title for this card..."
+											inputName="title"
+											id="listId"
+											idValue={data._id}
+											buttonName="Add Card"
+											setRefetch={setRefetch}
+										/>
+									</div>
+								) : (
+									<div
+										className="list__card__default"
+										onClick={() => setShowCardForm(true)}
+									>
+										Add a card
+									</div>
+								)}
 							</div>
 						</div>
 					);

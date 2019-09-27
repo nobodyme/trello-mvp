@@ -1,4 +1,5 @@
 import React from 'react';
+import { DragDropContext } from 'react-beautiful-dnd';
 
 import '../styles/pages/BoardDetailPage.css';
 
@@ -13,6 +14,10 @@ function BoardsDetailPage(props) {
 	const handleModalData = data => setModalData(data);
 	const handleCloseModal = () => setShowModal(false);
 	const handleShowModal = () => setShowModal(true);
+
+	const handleDragEnd = result => {
+		//TODO: reorder to do it seems
+	};
 
 	const [showListForm, setShowListForm] = React.useState(false);
 	const [refetch, setRefetch] = React.useState(false);
@@ -30,14 +35,16 @@ function BoardsDetailPage(props) {
 						} else if (apiData) {
 							return (
 								<div className="boardDetailPage">
-									{apiData.map(data => (
-										<List
-											handleShowModal={handleShowModal}
-											handleModalData={handleModalData}
-											data={data}
-											key={data._id}
-										/>
-									))}
+									<DragDropContext onDragEnd={handleDragEnd}>
+										{apiData.map(data => (
+											<List
+												handleShowModal={handleShowModal}
+												handleModalData={handleModalData}
+												data={data}
+												key={data._id}
+											/>
+										))}
+									</DragDropContext>
 									<div className="boardDetailPage__list">
 										{showListForm === true ? (
 											<div className="boardDetailPage__form">
