@@ -4,6 +4,7 @@ import '../styles/components/List.css';
 import FetchApi from './FetchApi';
 import Card from './Card';
 import SimpleForm from './SimpleForm';
+import { IoMdAdd } from 'react-icons/io';
 
 function List({ data, handleModalData, handleShowModal }) {
 	const [refetch, setRefetch] = React.useState(false);
@@ -52,7 +53,8 @@ function List({ data, handleModalData, handleShowModal }) {
 											className="list__card__default"
 											onClick={handleShowCardForm}
 										>
-											Add a card
+											<IoMdAdd />
+											<span className="default__name">Add a card</span>
 										</div>
 									)}
 								</div>
