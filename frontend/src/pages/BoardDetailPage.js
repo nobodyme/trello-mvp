@@ -1,5 +1,6 @@
 import React from "react";
 import { IoMdAdd } from "react-icons/io";
+import { DragDropContext } from "react-beautiful-dnd";
 
 import "../styles/pages/BoardDetailPage.css";
 
@@ -20,6 +21,10 @@ function BoardsDetailPage(props) {
   const handleCloseListForm = () => setShowListForm(false);
   const [refetch, setRefetch] = React.useState(false);
 
+  const handleDragEnd = result => {
+    //TODO
+  };
+
   return (
     <div className="pageContainer">
       <>
@@ -33,14 +38,16 @@ function BoardsDetailPage(props) {
             } else if (apiData) {
               return (
                 <div className="boardDetailPage">
-                  {apiData.map(data => (
-                    <List
-                      handleShowModal={handleShowModal}
-                      handleModalData={handleModalData}
-                      data={data}
-                      key={data._id}
-                    />
-                  ))}
+                  <DragDropContext onDragEnd={handleDragEnd}>
+                    {apiData.map(data => (
+                      <List
+                        handleShowModal={handleShowModal}
+                        handleModalData={handleModalData}
+                        data={data}
+                        key={data._id}
+                      />
+                    ))}
+                  </DragDropContext>
                   <div className="boardDetailPage__list">
                     {showListForm === true ? (
                       <div className="boardDetailPage__form">

@@ -1,17 +1,29 @@
-import React from 'react';
-import '../styles/components/Card.css';
+import React from "react";
+import { Draggable } from "react-beautiful-dnd";
 
-function Card({ data, handleShowModal, handleModalData }) {
-	const handleCardClick = () => {
-		handleModalData(data);
-		handleShowModal();
-	};
+import "../styles/components/Card.css";
 
-	return (
-		<div className="card" onClick={handleCardClick}>
-			{data.title}
-		</div>
-	);
+function Card({ data, handleShowModal, handleModalData, index }) {
+  const handleCardClick = () => {
+    handleModalData(data);
+    handleShowModal();
+  };
+
+  return (
+    <Draggable draggableId={data._id} index={index}>
+      {provided => (
+        <div
+          {...provided.draggableProps}
+          {...provided.dragHandleProps}
+          ref={provided.innerRef}
+          className="card"
+          onClick={handleCardClick}
+        >
+          {data.title}
+        </div>
+      )}
+    </Draggable>
+  );
 }
 
 export default Card;
