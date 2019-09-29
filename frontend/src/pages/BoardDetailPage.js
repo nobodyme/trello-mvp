@@ -1,6 +1,7 @@
 import React from "react";
 import { IoMdAdd } from "react-icons/io";
 import { DragDropContext } from "react-beautiful-dnd";
+import axios from "../utils/axios";
 
 import "../styles/pages/BoardDetailPage.css";
 
@@ -20,9 +21,37 @@ function BoardsDetailPage(props) {
   const handleShowListForm = () => setShowListForm(true);
   const handleCloseListForm = () => setShowListForm(false);
   const [refetch, setRefetch] = React.useState(false);
+  const [cardRefetch, setCardRefetch] = React.useState(false);
 
   const handleDragEnd = result => {
-    //TODO
+    const { destination, source, draggableId } = result;
+    //console.log("source", source);
+    if (!destination) {
+      return;
+    }
+    if (
+      destination.droppableId === source.droppableId &&
+      destination.index === source.index
+    ) {
+      return;
+    }
+    axios
+      .post("/card/updatecardorder", {
+        sourcelistId: source.droppableId,
+        destinationlistId: destination.droppableId,
+        sourceIndex: source.index,
+        destinationIndex: destination.index,
+        cardId: draggableId
+      })
+      .then(res => {
+        console.log(res);
+        setCardRefetch(c => !c);
+        return;
+      })
+      .catch(err => {
+        console.log(err.message);
+        return;
+      });
   };
 
   return (
@@ -45,6 +74,8 @@ function BoardsDetailPage(props) {
                         handleModalData={handleModalData}
                         data={data}
                         key={data._id}
+                        refetch={cardRefetch}
+                        setRefetch={setCardRefetch}
                       />
                     ))}
                   </DragDropContext>

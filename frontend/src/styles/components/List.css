@@ -1,29 +1,32 @@
-.list{
-	min-width: 300px;
-	min-height: 100px;
-	margin-left: 10px;
-	border: 1px solid #e0e3e7;
-	border-radius: 4px;
-	background: #e0e3e7;
-	box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
-	padding: 10px;
+.list {
+  min-width: 300px;
+  min-height: 100px;
+  margin-left: 10px;
+  border: 1px solid #e0e3e7;
+  border-radius: 4px;
+  background: #e0e3e7;
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+  padding: 10px;
 }
 
-
-.list__title{
-	font-weight: bold;
-	font-size: 14px;
-	padding-bottom: 10px;
+.list__title {
+  font-weight: bold;
+  font-size: 14px;
+  padding-bottom: 10px;
 }
 
-.list__card__default{
-	padding-top: 10px;
-	min-width: 300px;
-	display: flex;
-	align-items: center;
+.list__card__default {
+  padding-top: 10px;
+  min-width: 300px;
+  display: flex;
+  align-items: center;
 }
 
-.default__name{
-	padding-left: 5px;
-	font-size: 14px;
+.default__name {
+  padding-left: 5px;
+  font-size: 14px;
+}
+
+.list__droppableContainer {
+  min-height: 10px;
 }

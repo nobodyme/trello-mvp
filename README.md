@@ -14,6 +14,7 @@
 
 ### Features implemented
 
-- create mutiple boards
-- create mutiple lists
-- create mutiple cards in each list with comments and description
+- create, read mutiple boards
+- create, read mutiple lists
+- create, read mutiple cards in each list, with comments and description
+- move cards between lists

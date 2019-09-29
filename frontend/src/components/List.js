@@ -7,8 +7,7 @@ import Card from "./Card";
 import SimpleForm from "./SimpleForm";
 import { IoMdAdd } from "react-icons/io";
 
-function List({ data, handleModalData, handleShowModal }) {
-  const [refetch, setRefetch] = React.useState(false);
+function List({ data, handleModalData, handleShowModal, refetch, setRefetch }) {
   const [showCardForm, setShowCardForm] = React.useState(false);
   const handleShowCardForm = () => setShowCardForm(true);
   const handleCloseCardForm = () => setShowCardForm(false);
@@ -28,7 +27,11 @@ function List({ data, handleModalData, handleShowModal }) {
               <div className="list__cards">
                 <Droppable droppableId={data._id}>
                   {provided => (
-                    <div {...provided.droppableProps} ref={provided.innerRef}>
+                    <div
+                      className="list__droppableContainer"
+                      {...provided.droppableProps}
+                      ref={provided.innerRef}
+                    >
                       {apiData.map((data, index) => (
                         <Card
                           handleModalData={handleModalData}
