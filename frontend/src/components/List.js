@@ -10,24 +10,24 @@ import "../styles/components/List.css";
 
 function List({ data, setListRefetch, cardRefetch, setCardRefetch }) {
   return (
-    <FetchApi
-      api={`/card/getlistcards?listId=${data._id}`}
-      forceRefetch={cardRefetch}
-    >
-      {(apiData, error) => {
-        if (error) {
-          return <div>Error</div>;
-        } else if (apiData) {
-          return (
-            <div className="list">
-              <div className="list__header">
-                <div className="list__title">{data.title}</div>
-                <ListOptions
-                  id={data._id}
-                  api={"/list/deletelist"}
-                  setRefetch={setListRefetch}
-                />
-              </div>
+    <div className="list">
+      <div className="list__header">
+        <div className="list__title">{data.title}</div>
+        <ListOptions
+          id={data._id}
+          api={"/list/deletelist"}
+          setRefetch={setListRefetch}
+        />
+      </div>
+      <FetchApi
+        api={`/card/getlistcards?listId=${data._id}`}
+        forceRefetch={cardRefetch}
+      >
+        {(apiData, error) => {
+          if (error) {
+            return <div>Error</div>;
+          } else if (apiData) {
+            return (
               <div className="list__cards">
                 <Droppable droppableId={data._id}>
                   {provided => (
@@ -50,13 +50,13 @@ function List({ data, setListRefetch, cardRefetch, setCardRefetch }) {
                 </Droppable>
                 <CardForm id={data._id} setRefetch={setCardRefetch} />
               </div>
-            </div>
-          );
-        } else {
-          return null;
-        }
-      }}
-    </FetchApi>
+            );
+          } else {
+            return null;
+          }
+        }}
+      </FetchApi>
+    </div>
   );
 }
 

@@ -1,36 +1,37 @@
-.boardsListPage{
-	display: flex;
-	flex-wrap: wrap;
+.boardsListPage {
+  display: flex;
+  flex-wrap: wrap;
 }
 
-.board__cardHolder{
-	width: 200px;
-	height: 100px;
-	margin: 0 15px 45px 0;
-	text-decoration: none;
-	color: black;
-	border: 1px solid #e7eaf3;
-	border-radius: 8px;
-	background: #fff;
-	box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
-	padding: 10px;
+.board__cardHolder {
+  width: 200px;
+  height: 100px;
+  margin: 0 15px 45px 0;
+  text-decoration: none;
+  color: black;
+  border: 1px solid #e7eaf3;
+  border-radius: 8px;
+  background: #fff;
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+  padding: 10px;
 }
 
-.board__new{
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	font-size: 14px;
-	background: #f0f2f4;
+.board__new {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  background: #f0f2f4;
 }
 
-.board__title{
-	font-weight: bold;
-	font-size: large;
+.board__title {
+  font-weight: bold;
+  font-size: large;
+  color: white;
 }
 
-.board__cardHolder:hover{
-	opacity: 0.7;
-	text-decoration: none;
-	color: black;
+.board__cardHolder:hover {
+  opacity: 0.7;
+  text-decoration: none;
+  color: black;
 }

@@ -2,6 +2,7 @@ const express = require("express");
 const router = express.Router();
 const List = require("../models/listSchema");
 const Card = require("../models/cardSchema");
+const Comment = require("../models/commentSchema");
 
 router.post("/addlistcard", async (req, res) => {
   const listId = req.body.listId;
@@ -88,8 +89,8 @@ router.post("/deletecard", async (req, res) => {
     return res.status(400).json({ error: "Insufficient data" });
   }
   try {
-    const card = await Card.deleteMany({ card: cardId });
-    const comment = await Comment.deleteMany({ list: listId });
+    const card = await Card.deleteOne({ _id: cardId });
+    const comment = await Comment.deleteMany({ card: cardId });
     return res.status(200).json({ status: "deleted" });
   } catch (err) {
     return res.status(500).json({ error: err.message });
