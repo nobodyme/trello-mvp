@@ -42,6 +42,7 @@ function SimpleForm({
     <div>
       <form onSubmit={handleSubmit}>
         <input
+          autoFocus
           className="simpleForm__input"
           placeholder={inputPlaceholder}
           name={inputName}

@@ -25,7 +25,7 @@ router.post("/addlistcard", async (req, res) => {
       if (lastCard[0]) {
         order = lastCard[0].order + order;
       }
-      const newCard = new Card({ list, title, order });
+      const newCard = new Card({ board: list.board, list, title, order });
       const savedCard = await newCard.save();
       return res.status(200).json(savedCard);
     }
@@ -69,10 +69,22 @@ router.get("/getlistcards", async (req, res) => {
   }
 });
 
+router.post("/deletecard", async (req, res) => {
+  const cardId = req.body.cardId;
+  if (!cardId) {
+    return res.status(400).json({ error: "Insufficient data" });
+  }
+  try {
+    const card = await Card.deleteMany({ card: cardId });
+    const comment = await Comment.deleteMany({ list: listId });
+    return res.status(200).json({ status: "deleted" });
+  } catch (err) {
+    return res.status(500).json({ error: err.message });
+  }
+});
+
 router.post("/updatecardorder", async (req, res) => {
-  const sourcelistId = req.body.sourcelistId;
   const destinationlistId = req.body.destinationlistId;
-  const sourceIndex = req.body.sourceIndex;
   const destinationIndex = req.body.destinationIndex;
   const cardId = req.body.cardId;
   let defaultOrder = 18700;

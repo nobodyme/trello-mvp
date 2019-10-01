@@ -37,19 +37,15 @@ function BoardsDetailPage(props) {
     }
     axios
       .post("/card/updatecardorder", {
-        sourcelistId: source.droppableId,
         destinationlistId: destination.droppableId,
-        sourceIndex: source.index,
         destinationIndex: destination.index,
         cardId: draggableId
       })
       .then(res => {
-        console.log(res);
         setCardRefetch(c => !c);
         return;
       })
       .catch(err => {
-        console.log(err.message);
         return;
       });
   };

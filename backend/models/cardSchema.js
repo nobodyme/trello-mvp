@@ -1,7 +1,12 @@
 const mongoose = require("mongoose");
 const List = require("./listSchema");
+const Board = require("./boardSchema");
 
 const cardSchema = mongoose.Schema({
+  board: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: Board
+  },
   list: {
     type: mongoose.Schema.Types.ObjectId,
     ref: List
