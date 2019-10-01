@@ -1,0 +1,23 @@
+.listFormContainer {
+  margin-left: 15px;
+  min-width: 300px;
+}
+
+.listForm {
+  background: #e0e3e7;
+  padding: 10px;
+}
+
+.listForm__default {
+  background: #f4f5f7;
+  height: 48px;
+  padding: 10px;
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  margin-right: 15px;
+}
+
+.listForm__default:hover {
+  background: #e0e3e7;
+}

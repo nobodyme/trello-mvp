@@ -1,5 +1,4 @@
 import React from "react";
-import { IoMdAdd } from "react-icons/io";
 import { DragDropContext } from "react-beautiful-dnd";
 import axios from "../utils/axios";
 
@@ -7,18 +6,14 @@ import "../styles/pages/BoardDetailPage.css";
 
 import FetchApi from "../components/FetchApi";
 import List from "../components/List";
-import SimpleForm from "../components/SimpleForm";
+import ListForm from "../components/ListForm";
 
 function BoardsDetailPage(props) {
-  const [showListForm, setShowListForm] = React.useState(false);
-  const handleShowListForm = () => setShowListForm(true);
-  const handleCloseListForm = () => setShowListForm(false);
   const [refetch, setRefetch] = React.useState(false);
   const [cardRefetch, setCardRefetch] = React.useState(false);
 
   const handleDragEnd = result => {
     const { destination, source, draggableId } = result;
-    //console.log("source", source);
     if (!destination) {
       return;
     }
@@ -65,31 +60,7 @@ function BoardsDetailPage(props) {
                     />
                   ))}
                 </DragDropContext>
-                <div className="boardDetailPage__list">
-                  {showListForm === true ? (
-                    <div className="boardDetailPage__form">
-                      <SimpleForm
-                        toggleForm={setShowListForm}
-                        api="/list/addboardlist"
-                        inputPlaceholder="Enter list title..."
-                        inputName="title"
-                        id="boardId"
-                        idValue={props.match.params.id}
-                        buttonName="Add List"
-                        setRefetch={setRefetch}
-                        handleClose={handleCloseListForm}
-                      />
-                    </div>
-                  ) : (
-                    <div
-                      className="boardDetailPage__default"
-                      onClick={handleShowListForm}
-                    >
-                      <IoMdAdd />
-                      <span className="default__name">Add a list</span>
-                    </div>
-                  )}
-                </div>
+                <ListForm props={props} setRefetch={setRefetch} />
               </div>
             );
           } else {
