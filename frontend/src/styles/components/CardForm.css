@@ -1,0 +1,11 @@
+.cardForm__default {
+  padding-top: 10px;
+  min-width: 300px;
+  display: flex;
+  align-items: center;
+}
+
+.default__name {
+  padding-left: 5px;
+  font-size: 14px;
+}

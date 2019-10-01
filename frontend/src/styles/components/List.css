@@ -9,22 +9,15 @@
   padding: 10px;
 }
 
+.list__header {
+  display: flex;
+  justify-content: space-between;
+}
+
 .list__title {
   font-weight: bold;
   font-size: 14px;
   padding-bottom: 10px;
-}
-
-.list__card__default {
-  padding-top: 10px;
-  min-width: 300px;
-  display: flex;
-  align-items: center;
-}
-
-.default__name {
-  padding-left: 5px;
-  font-size: 14px;
 }
 
 .list__droppableContainer {

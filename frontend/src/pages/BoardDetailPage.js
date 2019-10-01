@@ -55,8 +55,9 @@ function BoardsDetailPage(props) {
                     <List
                       data={data}
                       key={data._id}
-                      refetch={cardRefetch}
-                      setRefetch={setCardRefetch}
+                      setListRefetch={setRefetch}
+                      cardRefetch={cardRefetch}
+                      setCardRefetch={setCardRefetch}
                     />
                   ))}
                 </DragDropContext>

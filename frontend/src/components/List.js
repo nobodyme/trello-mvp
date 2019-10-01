@@ -1,21 +1,18 @@
 import React from "react";
-import "../styles/components/List.css";
 import { Droppable } from "react-beautiful-dnd";
 
 import FetchApi from "./FetchApi";
 import Card from "./Card";
-import SimpleForm from "./SimpleForm";
-import { IoMdAdd } from "react-icons/io";
+import CardForm from "../components/CardForm";
+import ListOptions from "../components/ListOptions";
 
-function List({ data, refetch, setRefetch }) {
-  const [showCardForm, setShowCardForm] = React.useState(false);
-  const handleShowCardForm = () => setShowCardForm(true);
-  const handleCloseCardForm = () => setShowCardForm(false);
+import "../styles/components/List.css";
 
+function List({ data, setListRefetch, cardRefetch, setCardRefetch }) {
   return (
     <FetchApi
       api={`/card/getlistcards?listId=${data._id}`}
-      forceRefetch={refetch}
+      forceRefetch={cardRefetch}
     >
       {(apiData, error) => {
         if (error) {
@@ -23,7 +20,14 @@ function List({ data, refetch, setRefetch }) {
         } else if (apiData) {
           return (
             <div className="list">
-              <div className="list__title">{data.title}</div>
+              <div className="list__header">
+                <div className="list__title">{data.title}</div>
+                <ListOptions
+                  id={data._id}
+                  api={"/list/deletelist"}
+                  setRefetch={setListRefetch}
+                />
+              </div>
               <div className="list__cards">
                 <Droppable droppableId={data._id}>
                   {provided => (
@@ -39,31 +43,7 @@ function List({ data, refetch, setRefetch }) {
                     </div>
                   )}
                 </Droppable>
-                <div className="list__cards__new">
-                  {showCardForm === true ? (
-                    <div className="list__card__form">
-                      <SimpleForm
-                        toggleForm={setShowCardForm}
-                        api="/card/addlistcard"
-                        inputPlaceholder="Enter a title for this card..."
-                        inputName="title"
-                        id="listId"
-                        idValue={data._id}
-                        buttonName="Add Card"
-                        setRefetch={setRefetch}
-                        handleClose={handleCloseCardForm}
-                      />
-                    </div>
-                  ) : (
-                    <div
-                      className="list__card__default"
-                      onClick={handleShowCardForm}
-                    >
-                      <IoMdAdd />
-                      <span className="default__name">Add a card</span>
-                    </div>
-                  )}
-                </div>
+                <CardForm id={data._id} setRefetch={setCardRefetch} />
               </div>
             </div>
           );

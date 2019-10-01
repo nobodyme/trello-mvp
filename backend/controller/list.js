@@ -1,7 +1,9 @@
 const express = require("express");
 const router = express.Router();
 const List = require("../models/listSchema");
+const Card = require("../models/cardSchema");
 const Board = require("../models/boardSchema");
+const Comment = require("../models/commentSchema");
 
 router.post("/addboardlist", async (req, res) => {
   const boardId = req.body.boardId;

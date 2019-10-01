@@ -1,9 +1,10 @@
 import React from "react";
-import "../styles/components/CardModal.css";
-
 import Modal from "react-bootstrap/Modal";
+
 import Comment from "./Comment";
 import Description from "./Description";
+
+import "../styles/components/CardModal.css";
 
 function CardModal({ data, show, handleCloseModal }) {
   return (

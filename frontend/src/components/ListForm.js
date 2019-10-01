@@ -1,6 +1,7 @@
 import React from "react";
-import SimpleForm from "../components/SimpleForm";
 import { IoMdAdd } from "react-icons/io";
+
+import SimpleForm from "../components/SimpleForm";
 
 import "../styles/components/ListForm.css";
 
