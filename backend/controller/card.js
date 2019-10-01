@@ -69,6 +69,19 @@ router.get("/getlistcards", async (req, res) => {
   }
 });
 
+router.get("/getcard", async (req, res) => {
+  const cardId = req.query.cardId;
+  if (!cardId) {
+    return res.status(400).json({ error: "Insufficient data" });
+  }
+  try {
+    const card = await Card.findOne({ _id: cardId });
+    return res.status(200).json(card);
+  } catch (err) {
+    return res.status(500).json({ err: err.message });
+  }
+});
+
 router.post("/deletecard", async (req, res) => {
   const cardId = req.body.cardId;
   if (!cardId) {

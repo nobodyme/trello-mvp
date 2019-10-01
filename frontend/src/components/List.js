@@ -7,7 +7,7 @@ import Card from "./Card";
 import SimpleForm from "./SimpleForm";
 import { IoMdAdd } from "react-icons/io";
 
-function List({ data, handleModalData, handleShowModal, refetch, setRefetch }) {
+function List({ data, refetch, setRefetch }) {
   const [showCardForm, setShowCardForm] = React.useState(false);
   const handleShowCardForm = () => setShowCardForm(true);
   const handleCloseCardForm = () => setShowCardForm(false);
@@ -33,13 +33,7 @@ function List({ data, handleModalData, handleShowModal, refetch, setRefetch }) {
                       ref={provided.innerRef}
                     >
                       {apiData.map((data, index) => (
-                        <Card
-                          handleModalData={handleModalData}
-                          handleShowModal={handleShowModal}
-                          data={data}
-                          key={data._id}
-                          index={index}
-                        />
+                        <Card data={data} key={data._id} index={index} />
                       ))}
                       {provided.placeholder}
                     </div>
