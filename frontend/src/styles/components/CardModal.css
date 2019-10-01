@@ -1,3 +1,14 @@
 .cardModal__header {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
   font-weight: bold;
+  align-items: center;
+}
+
+.cardModal__delete {
+  background: transparent;
+  border: none;
+  padding: 0;
+  font-size: 18px;
 }

@@ -5,7 +5,7 @@ import "../styles/components/Card.css";
 
 import CardModal from "../components/CardModal";
 
-function Card({ data, index }) {
+function Card({ data, index, setRefetch }) {
   const [showModal, setShowModal] = React.useState(false);
   const handleCloseModal = () => setShowModal(false);
   const handleShowModal = () => setShowModal(true);
@@ -28,6 +28,7 @@ function Card({ data, index }) {
       <CardModal
         data={data}
         show={showModal}
+        setRefetch={setRefetch}
         handleCloseModal={handleCloseModal}
       />
     </>

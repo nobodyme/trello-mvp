@@ -37,7 +37,12 @@ function List({ data, setListRefetch, cardRefetch, setCardRefetch }) {
                       ref={provided.innerRef}
                     >
                       {apiData.map((data, index) => (
-                        <Card data={data} key={data._id} index={index} />
+                        <Card
+                          data={data}
+                          key={data._id}
+                          index={index}
+                          setRefetch={setCardRefetch}
+                        />
                       ))}
                       {provided.placeholder}
                     </div>
