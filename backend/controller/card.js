@@ -150,7 +150,7 @@ router.post("/updatecardorder", async (req, res) => {
       }
       // first card
       else if (destinationIndex === 0) {
-        card.order = cardsArray[1].order / 2;
+        card.order = cardsArray[0].order / 2;
       }
       // middle card
       else {
