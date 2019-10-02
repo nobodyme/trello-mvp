@@ -9,6 +9,12 @@ import Description from "./Description";
 import "../styles/components/CardModal.css";
 
 function CardModal({ data, show, handleCloseModal, setRefetch }) {
+  const [edit, setEdit] = React.useState(false);
+  const [title, setTitle] = React.useState(data ? data.title : null);
+  const toggleEdit = () => {
+    setEdit(c => !c);
+  };
+
   const deleteCard = () => {
     axios
       .post("/card/deleteCard", { cardId: data ? data._id : 1 })
@@ -18,11 +24,40 @@ function CardModal({ data, show, handleCloseModal, setRefetch }) {
       .catch(err => {});
   };
 
+  const onSubmit = e => {
+    e.preventDefault();
+    axios
+      .post("/card/updatecard", {
+        id: data ? data._id : null,
+        title: title
+      })
+      .then(res => {
+        setRefetch(c => !c);
+        toggleEdit();
+      })
+      .catch(err => {
+        toggleEdit();
+      });
+  };
+
   return (
     <Modal size="lg" show={show} onHide={handleCloseModal}>
       <Modal.Header closeButton>
         <div className="cardModal__header">
-          <div>{data ? data.title : null}</div>
+          {edit ? (
+            <form onSubmit={onSubmit}>
+              <input
+                autoFocus
+                type="text"
+                value={title}
+                onChange={e => setTitle(e.target.value)}
+              />
+            </form>
+          ) : (
+            <div className="cardModal__title" onClick={toggleEdit}>
+              {data ? data.title : null}
+            </div>
+          )}
           <button className="cardModal__delete" onClick={deleteCard}>
             <IoIosTrash />
           </button>

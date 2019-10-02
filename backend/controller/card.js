@@ -86,16 +86,23 @@ router.get("/getcard", async (req, res) => {
 router.post("/updatecard", async (req, res) => {
   const cardId = req.body.id;
   const title = req.body.title;
+  const description = req.body.description;
+
+  const updateObj = {};
+  if (title) {
+    updateObj.title = title;
+  }
+  if (description) {
+    updateObj.description = description;
+  }
 
   if (!cardId) {
     return res.status(400).json({ error: "Insufficient data" });
   }
   try {
-    const card = await Card.findOneAndUpdate(
-      { _id: cardId },
-      { title },
-      { new: true }
-    );
+    const card = await Card.findOneAndUpdate({ _id: cardId }, updateObj, {
+      new: true
+    });
     if (!card) {
       return res.status(404).json({ error: "card not found" });
     }

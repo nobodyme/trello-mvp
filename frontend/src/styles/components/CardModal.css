@@ -6,6 +6,10 @@
   align-items: center;
 }
 
+.cardModal__title {
+  width: 100%;
+}
+
 .cardModal__delete {
   background: transparent;
   border: none;
