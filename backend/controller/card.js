@@ -83,6 +83,28 @@ router.get("/getcard", async (req, res) => {
   }
 });
 
+router.post("/updatecard", async (req, res) => {
+  const cardId = req.body.id;
+  const title = req.body.title;
+
+  if (!cardId) {
+    return res.status(400).json({ error: "Insufficient data" });
+  }
+  try {
+    const card = await Card.findOneAndUpdate(
+      { _id: cardId },
+      { title },
+      { new: true }
+    );
+    if (!card) {
+      return res.status(404).json({ error: "card not found" });
+    }
+    return res.status(200).json(card);
+  } catch (err) {
+    return res.status(500).json({ error: err.message });
+  }
+});
+
 router.post("/deletecard", async (req, res) => {
   const cardId = req.body.cardId;
   if (!cardId) {

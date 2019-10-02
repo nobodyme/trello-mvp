@@ -1,6 +1,7 @@
 import React from "react";
 import FetchApi from "./FetchApi";
 import SimpleForm from "./SimpleForm";
+import CommentItem from "./CommentItem";
 
 import "../styles/components/Comment.css";
 
@@ -32,9 +33,7 @@ function Comment({ id }) {
             return (
               <div className="comment__list">
                 {apiData.map(comment => (
-                  <div key={comment._id} className="comment__body">
-                    {comment.body}
-                  </div>
+                  <CommentItem comment={comment} setRefetch={setRefetch} />
                 ))}
               </div>
             );

@@ -56,4 +56,26 @@ router.post("/deletelist", async (req, res) => {
   }
 });
 
+router.post("/updatelist", async (req, res) => {
+  const listId = req.body.id;
+  const title = req.body.title;
+
+  if (!listId) {
+    return res.status(400).json({ error: "Insufficient data" });
+  }
+  try {
+    const list = await List.findOneAndUpdate(
+      { _id: listId },
+      { title },
+      { new: true }
+    );
+    if (!list) {
+      return res.status(404).json({ error: "card not found" });
+    }
+    return res.status(200).json(list);
+  } catch (err) {
+    return res.status(500).json({ error: err.message });
+  }
+});
+
 module.exports = router;

@@ -57,4 +57,26 @@ router.post("/deletecomment", async (req, res) => {
   }
 });
 
+router.post("/updatecomment", async (req, res) => {
+  const commentId = req.body.id;
+  const body = req.body.body;
+
+  if (!commentId) {
+    return res.status(400).json({ error: "Insufficient data" });
+  }
+  try {
+    const comment = await Comment.findOneAndUpdate(
+      { _id: commentId },
+      { body },
+      { new: true }
+    );
+    if (!comment) {
+      return res.status(404).json({ error: "card not found" });
+    }
+    return res.status(200).json(comment);
+  } catch (err) {
+    return res.status(500).json({ error: err.message });
+  }
+});
+
 module.exports = router;
